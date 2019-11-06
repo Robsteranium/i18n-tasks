@@ -2,6 +2,7 @@
 
 require 'i18n/tasks/translators/deepl_translator.rb'
 require 'i18n/tasks/translators/google_translator.rb'
+require 'i18n/tasks/translators/capitalise_translator.rb'
 
 module I18n::Tasks
   module Translation
@@ -15,6 +16,8 @@ module I18n::Tasks
         Translators::DeeplTranslator.new(self).translate_forest(forest, from)
       when :google
         Translators::GoogleTranslator.new(self).translate_forest(forest, from)
+      when :capitalise
+        Translators::CapitaliseTranslator.new(self).translate_forest(forest, from)
       else
         fail CommandError, "invalid backend: #{backend}"
       end
